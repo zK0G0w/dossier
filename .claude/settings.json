@@ -1,0 +1,23 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "\"$CLAUDE_PROJECT_DIR/.agents/bin/archive.sh\"",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "shell": "powershell",
+            "command": "powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"$env:CLAUDE_PROJECT_DIR\\.agents\\bin\\archive.ps1\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

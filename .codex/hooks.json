@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./.agents/bin/archive.sh",
+            "commandWindows": "powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File .\\.agents\\bin\\archive.ps1",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
