@@ -99,6 +99,7 @@ Get-ChildItem tasks,archive -Recurse -Filter TASK.md | Select-String -Encoding u
 工作流要在 mac/Linux 和 Windows 上都能原生跑，不假设 Windows 上装了 Git Bash 或 WSL。
 
 - `.agents/bin/` 下的脚本成对存在：`xxx.sh` + `xxx.ps1`，两边行为必须一致，改一个就要改另一个。
+- **`.ps1` 文件必须存成带 BOM 的 UTF-8。** Windows PowerShell 5.1 按系统代码页（中文机器是 GBK）读无 BOM 的脚本，注释和字符串里的中文会被拆成半个字符，吞掉后面的引号，整个脚本解析失败。`.sh` 反过来不能加 BOM，会顶掉 shebang。
 - hook 按平台分流：`.claude/settings.json` 用 `shell` 字段（`bash` / `powershell`）挂两个 handler，跑不上的那个平台是静默空操作；`.codex/hooks.json` 用 `command` / `commandWindows`。
 - 文档里给命令时，如果 Windows 上没有等价的原生命令（`grep`、`head`、`file` 这些都没有），补一段 PowerShell 版本，别默认用户有 Git Bash。
 - 临时文件用 `/tmp/`（mac/Linux）或 `$env:TEMP`（Windows），不要写死其中一个。

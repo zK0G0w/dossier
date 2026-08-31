@@ -1,4 +1,4 @@
-# 归档 tasks/ 下过期的月目录到 archive/YYYY/MM/
+﻿# 归档 tasks/ 下过期的月目录到 archive/YYYY/MM/
 # 保留当月和上月，更早的整月搬走。幂等，随时可跑。
 
 Set-StrictMode -Version Latest
